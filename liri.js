@@ -2,6 +2,7 @@
 require("dotenv").config();
 
 //Create variables
+var moment = require("moment");
 //var keys = require("./keys.js");
 //var fs = require("fs");
 //var spotify = new Spotify(keys.spotify);
@@ -42,6 +43,21 @@ function UserInputs(commandLine, titleInput) {
 //Create function for Bands In Town
 //Requested API, waiting to hear back from them. app_id=codingbootcamp
 //Need queryURL+apikey
+
+function showConcertInfo(titleInput){
+   // axios.get(`https://rest.bandsintown.com/artists/Bruno+Mars/events?app_id=codingbootcamp`)
+   axios.get(`https://rest.bandsintown.com/artists/${titleInput}/events?app_id=codingbootcamp`)
+   .then(function (response) {
+    
+        for (var i = 0; i < response.data.length; i++) {
+           
+         console.log(`Venue Name: ${response.data[i].venue.name}`)
+         console.log(`Venue Location: ${response.data[i].venue.city}, ${response.data[i].venue.country}`)
+         console.log("Date of the Event: " + moment(response.data[i].datetime).format("L"));
+   
+         }
+   
+});}
 
 //Create function for OMDB
 // Include the axios npm package (Don't forget to run "npm install axios" in this folder first!)
