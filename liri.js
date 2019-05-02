@@ -10,21 +10,25 @@ var axios = require("axios");
 var commandLine = process.argv[2];
 var titleInput = process.argv[3];
 //Create function for node commands
-//UserInputs(commandLine, titleInput);
+UserInputs(commandLine, titleInput);
 
 function UserInputs(commandLine, titleInput) {
-    switch (titleInput) {
+    switch (commandLine) {
         case 'concert-this':
             //Show Concert Info
+            showConcertInfo(titleInput)
             break;
         case 'spotify-this-song':
             //Show Spotify Info
+            showSpotifyInfo(titleInput)
             break;
         case 'movie-this':
             //Show Movie Info
+            showMovieInfo(titleInput)
             break;
         case 'do-what-it-says':
             //Show what it says
+            showWhatItSays(titleInput)
             break;
         default:
             console.log("Not a recognized command")
@@ -41,7 +45,12 @@ function UserInputs(commandLine, titleInput) {
 
 //Create function for OMDB
 // Include the axios npm package (Don't forget to run "npm install axios" in this folder first!)
-
+function showMovieInfo(titleInput){
+    if (titleInput === undefined) {
+        titleInput = "Mr. Nobody"
+        console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
+        console.log("It's on Netflix!");
+    }
 
 // Then run a request with axios to the OMDB API with the movie specified
 
@@ -56,8 +65,8 @@ axios.get(`http://www.omdbapi.com/?t=${titleInput}&y=&plot=short&tomatoes=true&a
     console.log(`Plot: ${response.data.Plot}`)
     console.log(`Actors: ${response.data.Actors}`)
     console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);
-  })
+  });
    
-
+}
     
   
