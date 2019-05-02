@@ -1,6 +1,5 @@
 //Read and set environment variables
 require("dotenv").config();
-
 //Create variables
 var moment = require("moment");
 var keys = require("./keys.js");
@@ -35,7 +34,6 @@ function UserInputs(commandLine, titleInput) {
             console.log("Not a recognized command")
     }
 }
-
 //Create function for Spotify
 function showSpotifyInfo() {
     spotify.search({ type: "track", query: titleInput }, function (err, data) {
@@ -54,11 +52,7 @@ function showSpotifyInfo() {
     });
 
 }
-
 //Create function for Bands In Town
-//Requested API, waiting to hear back from them. app_id=codingbootcamp
-//Need queryURL+apikey
-
 function showConcertInfo(titleInput) {
 
     axios.get(`https://rest.bandsintown.com/artists/${titleInput}/events?app_id=codingbootcamp`)
@@ -71,21 +65,16 @@ function showConcertInfo(titleInput) {
                 console.log(`Date of the Event: ${moment(response.data[i].datetime).format("L")}`);
 
             }
-
         });
 }
-
 //Create function for OMDB
-// Include the axios npm package
 function showMovieInfo(titleInput) {
     if (titleInput === undefined) {
         titleInput = "Mr. Nobody"
         console.log("If you haven't watched 'Mr. Nobody,' then you should: http://www.imdb.com/title/tt0485947/");
         console.log("It's on Netflix!");
     }
-
     // Then run a request with axios to the OMDB API with the movie specified
-
     axios.get(`http://www.omdbapi.com/?t=${titleInput}&y=&plot=short&tomatoes=true&apikey=trilogy`)
         .then(function (response) {
             console.log(`Title: ${response.data.Title}`)
@@ -98,18 +87,14 @@ function showMovieInfo(titleInput) {
             console.log(`Actors: ${response.data.Actors}`)
             console.log(`Rotten Tomatoes Rating: ${response.data.Ratings[1].Value}`);
         });
-
 }
-
-
-//const fs = require('fs')
+//function for do-what-it-says
 function showWhatItSays() {
-fs.readFile('random.txt', 'utf8', function (error, data) {
-  // If the code experiences any errors it will log the error to the console.
-  if (error) {
-    return console.log(error)
-  }
-  console.log(data)
-
-});
+    fs.readFile('random.txt', 'utf8', function (error, data) {
+        // If the code experiences any errors it will log the error to the console.
+        if (error) {
+            return console.log(error)
+        }
+        console.log(data)
+    });
 }
