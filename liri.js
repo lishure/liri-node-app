@@ -7,6 +7,7 @@ var keys = require("./keys.js");
 var Spotify = require("node-spotify-api");
 var spotify = new Spotify(keys.spotify);
 var axios = require("axios");
+var fs = require("fs");
 //Capture User Inputs
 var commandLine = process.argv[2];
 var titleInput = process.argv[3];
@@ -101,3 +102,14 @@ function showMovieInfo(titleInput) {
 }
 
 
+//const fs = require('fs')
+function showWhatItSays() {
+fs.readFile('random.txt', 'utf8', function (error, data) {
+  // If the code experiences any errors it will log the error to the console.
+  if (error) {
+    return console.log(error)
+  }
+  console.log(data)
+
+});
+}
