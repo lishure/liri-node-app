@@ -36,6 +36,11 @@ function UserInputs(commandLine, titleInput) {
 }
 //Create function for Spotify
 function showSpotifyInfo() {
+    //If no song is provided, default search to The Sign by Ace of Base
+    if (titleInput === undefined) {
+        titleInput = "Ace of Base- The Sign"
+    }
+//search request
     spotify.search({ type: "track", query: titleInput }, function (err, data) {
         if (err) {
             console.log("Error occured: " + err);
@@ -50,7 +55,6 @@ function showSpotifyInfo() {
             console.log(`Album: ${songs[i].album.name}`)
         }
     });
-
 }
 //Create function for Bands In Town
 function showConcertInfo(titleInput) {
