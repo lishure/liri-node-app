@@ -28,7 +28,11 @@ This will search the Bands in Town Artist Events API for an artist and render th
 *Date of the Event (use moment to format this as "MM/DD/YYYY")
 
 Here is an example of what this would look like:
+<<<<<<< HEAD
 ![concert-this example](Screenshots/concert-this.png)
+=======
+(https://github.com/lishure/liri-node-app/blob/master/Screenshots/concert-this.png)
+>>>>>>> 3f818cae635d3d2c452f6ea89f137a33e90e61a4
 
 2) "spotify-this-song"
 
