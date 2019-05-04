@@ -9,7 +9,7 @@ var axios = require("axios");
 var fs = require("fs");
 //Capture User Inputs
 var commandLine = process.argv[2];
-var titleInput = process.argv.slice(3).join(" ");
+var titleInput = process.argv[3];
 //Create function for node commands
 UserInputs(commandLine, titleInput);
 function UserInputs(commandLine, titleInput) {
