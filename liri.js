@@ -9,7 +9,7 @@ var axios = require("axios");
 var fs = require("fs");
 //Capture User Inputs
 var commandLine = process.argv[2];
-var titleInput = process.argv[3];
+var titleInput = process.argv.slice(3).join(" ");
 //Create function for node commands
 UserInputs(commandLine, titleInput);
 function UserInputs(commandLine, titleInput) {
@@ -28,14 +28,14 @@ function UserInputs(commandLine, titleInput) {
             break;
         case 'do-what-it-says':
             //Show what it says
-            showWhatItSays(titleInput)
+            doWhatItSays(titleInput)
             break;
         default:
             console.log("Not a recognized command")
     }
 }
 //Create function for Spotify
-function showSpotifyInfo() {
+function showSpotifyInfo(titleInput) {
     //If no song is provided, default search to The Sign by Ace of Base
     if (titleInput === undefined) {
         titleInput = "Ace of Base- The Sign"
@@ -58,9 +58,9 @@ function showSpotifyInfo() {
 }
 //Create function for Bands In Town
 function showConcertInfo(titleInput) {
-
     axios.get(`https://rest.bandsintown.com/artists/${titleInput}/events?app_id=codingbootcamp`)
         .then(function (response) {
+            //console.log(response.data)
             //create loop to display search results
             for (var i = 0; i < response.data.length; i++) {
                 console.log("---------------------------")
@@ -93,12 +93,23 @@ function showMovieInfo(titleInput) {
         });
 }
 //function for do-what-it-says
-function showWhatItSays() {
+function doWhatItSays() {
     fs.readFile('random.txt', 'utf8', function (error, data) {
         // If the code experiences any errors it will log the error to the console.
         if (error) {
             return console.log(error)
         }
-        console.log(data)
+        var dataInput = data.split(",")
+        var command = dataInput[0]
+        var input = dataInput[1]
+        if (command === "spotify-this-song") {
+            showSpotifyInfo(input);
+        }
+        else if (command === "concert-this") {
+            showConcertInfo(input);
+        }
+        else {
+            showMovieInfo(input);
+        }
     });
 }
