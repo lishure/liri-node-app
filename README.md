@@ -28,7 +28,7 @@ This will search the Bands in Town Artist Events API for an artist and render th
 *Date of the Event (use moment to format this as "MM/DD/YYYY")
 
 Here is an example of what this would look like:
-********Insert concert-this SS here*******
+![concert-this example](Screenshots/concert-this.png)
 
 2) "spotify-this-song"
 
@@ -42,10 +42,10 @@ This will show the following information about the song in your terminal/bash wi
 *The album that the song is from
 
 Here is an example of what this would look like:
-********Insert spotify-this-song SS here*******
+![spotify-this-song example](Screenshots/spotify-this-song.png)
 
 If no song is provided then your program will default to "The Sign" by Ace of Base.
-********Insert spotify-default SS here*******
+![spotify-this default](Screenshots/spotify-default.png)
 
 3) "movie-this"
 
@@ -63,10 +63,10 @@ This will output the following information to your terminal/bash window:
   * Actors in the movie.
 
 Here is an example of what this would look like:
-********Insert movie-this SS here*******
+![movie-this example](Screenshots/movie-this.png)
 
 If the user doesn't type a movie in, the program will output data for the movie 'Mr. Nobody.'
-********Insert movie-default SS here*******
+![movie-this default](Screenshots/movie-default.png)
 
 4) "do-what-it-says"
 
@@ -78,6 +78,6 @@ Using the fs Node package, LIRI will take the text inside of random.txt and then
 It should run spotify-this-song for "I Want it That Way," as follows the text in random.txt.
 
 Here is an example of what this would look like:
-********Insert do-what-it-says SS here*******
+![do-what-it-says example](Screenshots/do-what-it-says.png)
 
 Edit the text in random.txt to test out the feature for movie-this and concert-this.
